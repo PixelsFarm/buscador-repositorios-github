@@ -2,9 +2,10 @@
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>Paginador-Buscador</title>
+	    <title>Paginador-Buscador repositorio Github</title>
 	    <meta name="viewport" content="width=device-width">
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	    <script src="js/dirPagination.js"></script>
 		<script src="js/main.js" ></script>
 	</head> 
 	<body data-ng-app="searchApp">
@@ -19,8 +20,9 @@
 				<p>Resultados totales en BBDD: {{ total }}</p>
 				<p>Lista resultados:</p>
 				<ul>
-					<li data-ng-repeat="repo in repositorio"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
+					<li data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
 				</ul>
+				<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 			</div>
 		</div>
 	</body>
