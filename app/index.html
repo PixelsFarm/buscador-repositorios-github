@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>Paginador-Buscador</title>
+	    <meta name="viewport" content="width=device-width">
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+		<script src="js/main.js" ></script>
+	</head> 
+	<body data-ng-app="searchApp">
+		<div data-ng-controller="mainCtrl">
+			<div id="error">{{ errorMessage }}</div>
+			<div id="search">
+				<input type="text" name="search" placeholder="busca usuario..." ng-model="repositories">
+				<br />
+				<a href="#" id="busca" data-ng-click="cogerDatos()">Muestra info</a>
+			</div>
+			<div id="results" data-ng-show="loaded">
+				<p>Resultados totales en BBDD: {{ total }}</p>
+				<p>Lista resultados:</p>
+				<ul>
+					<li data-ng-repeat="repo in repositorio"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+
