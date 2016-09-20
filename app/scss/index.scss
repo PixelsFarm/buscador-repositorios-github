@@ -1,0 +1,70 @@
+/* =======
+/* General
+/* ======= */
+#main {
+	width: 650px;
+	margin: 0 auto;
+}
+
+ul {
+	padding: 0;
+	margin-top: 10px;
+	margin-left: 25px; 
+}
+
+p {
+	margin-bottom: 0;
+}
+
+.center {
+	width: 49%;
+	margin: 0 auto;
+}
+
+
+/* =========
+/* Buscador
+/* ========= */
+#search h1 {
+	text-align: center;
+}
+
+#search {
+	@extend .center;
+}
+
+#search-form .bloc {
+	width: 78%;
+	margin: 0 auto;
+}
+
+#palabra-a-buscar {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+
+/* =========
+/* Resultados
+/* ========= */
+#results {
+	@extend .center;
+}
+
+
+/* ==========
+/* Pagination
+/* ========== */
+#paginador {
+	width: 65%;
+	margin: 0 auto;
+}
+
+ul.pagination {
+	list-style-type: none;
+
+	li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+}
