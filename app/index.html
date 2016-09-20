@@ -4,25 +4,35 @@
 	    <meta charset="utf-8">
 	    <title>Paginador-Buscador repositorio Github</title>
 	    <meta name="viewport" content="width=device-width">
+	    <link rel="stylesheet" type="text/css" href="css/index.css">
+	    <link rel="stylesheet" type="text/css" href="css/ispinner.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	    <script src="js/dirPagination.js"></script>
 		<script src="js/main.js" ></script>
 	</head> 
 	<body data-ng-app="searchApp">
 		<div data-ng-controller="mainCtrl">
-			<div id="error">{{ errorMessage }}</div>
-			<div id="search">
-				<input type="text" name="search" placeholder="busca usuario..." ng-model="repositories">
-				<br />
-				<a href="#" id="busca" data-ng-click="cogerDatos()">Muestra info</a>
-			</div>
-			<div id="results" data-ng-show="loaded">
-				<p>Resultados totales en BBDD: {{ total }}</p>
-				<p>Lista resultados:</p>
-				<ul>
-					<li data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
-				</ul>
-				<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
+			<div id="main">
+				<div id="error">{{ errorMessage }}</div>
+				<div id="search">
+					<form id="search-form" ng-submit="cogerDatos()">
+						<h1>Busca repositorio</h1>
+						<div class="bloc">
+							<input id="palabra-a-buscar" type="text" name="search" placeholder="busca repositorio..." ng-model="repositories">
+							<a href="#" id="busca" data-ng-click="cogerDatos()">Busca</a>
+						</div>
+					</form>
+				</div>
+				<div id="results" data-ng-show="loaded">
+					<p>Resultados totales en BBDD: {{ total }}</p>
+					<p>Lista resultados:</p>
+					<ul>
+						<li data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
+					</ul>
+					<div id="paginador">
+						<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

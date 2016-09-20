@@ -12,6 +12,7 @@ miApp.controller('mainCtrl', function($scope, $http){
 
 		$http.get("https://api.github.com/search/repositories?q=" + $scope.repositories + "&page=1&per_page=100")
 			.success(function(data) {
+				$scope.total = data.total_count;
 				$scope.repositorio = data.items;
 				$scope.loaded = true;
 				console.log('repositorios encontrados');
