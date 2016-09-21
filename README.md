@@ -1,1 +1,6 @@
-# Buscador de repositorios de Github mostrandonos una lista paginada junto el nombre del desarrollador
+# Buscador repositorios de Github.
+# Mostramos una lista: usuario + repositorio
+# Utilizado:
+# - Plantillas
+# - Paginador
+# - Bootstrap
