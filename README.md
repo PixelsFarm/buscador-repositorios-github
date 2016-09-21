@@ -1,6 +1,5 @@
 # Buscador repositorios de Github.
-# Mostramos una lista: usuario + repositorio
-# Utilizado:
-# - Plantillas
-# - Paginador
-# - Bootstrap
+Single Page Application de busqueda de repositorios utilizando la web API de Github.
+### Utilizado:
+- Angular: plantillas, include y paginador.
+- Bootstrap
