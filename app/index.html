@@ -6,6 +6,7 @@
 	    <meta name="viewport" content="width=device-width">
 	    <link rel="stylesheet" type="text/css" href="css/index.css">
 	    <link rel="stylesheet" type="text/css" href="css/spinner.css">
+	    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	    <script src="js/dirPagination.js"></script>
 		<script src="js/main.js" ></script>
@@ -27,9 +28,19 @@
 				<div id="results" data-ng-show="loaded">
 					<p>Resultados obtenidos de la BBDD de Github al buscar "{{ repositories }}": {{ total }}</p>
 					<p>Lista resultados (solo mostramos los 100 primeros):</p>
-					<ul>
+					<!-- <ul>
 						<li data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
-					</ul>
+					</ul> -->
+					<table class="table">
+						<tr>
+							<td>Usuario</td>
+							<td>repositorio</td>
+						</tr>
+						<tr data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10">
+							<td><a href="{{ repo.owner.html_url}}" target="_blank">{{ repo.owner.login }}</a></td>
+							<td><a href="{{ repo.html_url}}" target="_blank">{{repo.name}}</a></td>
+						</tr>
+					</table>
 					<div id="paginador">
 						<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 					</div>
