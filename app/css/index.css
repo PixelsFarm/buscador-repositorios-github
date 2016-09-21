@@ -2,8 +2,8 @@
 /* General
 /* ======= */
 #main {
-  width: 650px;
-  margin: 0 auto; }
+  /*width: 850px;
+	margin: 0 auto;*/ }
 
 ul {
   padding: 0;
@@ -13,8 +13,8 @@ ul {
 p {
   margin-bottom: 0; }
 
-.center, #search, #results {
-  width: 49%;
+.col-centered {
+  float: none;
   margin: 0 auto; }
 
 /* =========
@@ -27,21 +27,28 @@ p {
   width: 78%;
   margin: 0 auto; }
 
-#palabra-a-buscar {
-  display: inline-block;
-  margin-right: 5px; }
+#busca {
+  margin-top: 5px;
+  margin-bottom: 20px; }
 
 /* =========
 /* Resultados
 /* ========= */
+table {
+  margin-top: 20px; }
+  table tr th {
+    width: 50%; }
+  table tr td {
+    width: 50%; }
+
 /* ==========
 /* Pagination
 /* ========== */
-#paginador {
+dir-pagination-controls {
   margin: 0 auto; }
 
 ul.pagination {
-  list-style-type: none; }
-  ul.pagination li {
-    display: inline-block;
-    margin-right: 1px; }
+  margin: 20px auto; }
+  ul.pagination li a {
+    margin: 0 -1px;
+    padding: 6px 8px; }

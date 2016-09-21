@@ -4,45 +4,48 @@
 	    <meta charset="utf-8">
 	    <title>Paginador-Buscador repositorio Github</title>
 	    <meta name="viewport" content="width=device-width">
+	    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	    <link rel="stylesheet" type="text/css" href="css/index.css">
 	    <link rel="stylesheet" type="text/css" href="css/spinner.css">
-	    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	    <script src="js/dirPagination.js"></script>
 		<script src="js/main.js" ></script>
 	</head> 
 	<body data-ng-app="searchApp">
 		<div data-ng-controller="mainCtrl">
-			<div id="main">
-				<div id="error">{{ errorMessage }}</div>
-				<div id="search">
-					<form id="search-form" ng-submit="cogerDatos()">
-						<h1>Busca repositorio</h1>
-						<div class="bloc">
-							<input id="palabra-a-buscar" type="text" name="search" placeholder="busca repositorio..." ng-model="repositories">
-							<a href="#" id="busca" data-ng-click="cogerDatos()">Busca</a>
+			<div class="row">
+				<div id="main" class="col-md-7 col-sm-8 col-xs-8 col-centered">
+					<div id="error">{{ errorMessage }}</div>
+					<div id="search">
+						<form id="search-form" ng-submit="cogerDatos()">
+							<h1>Busca repositorio en Gitub</h1>
+							<div class="bloc text-center">
+								<input id="palabra-a-buscar" class="form-control" type="text" name="search" placeholder="busca repositorio..." ng-model="repositories">
+								<a href="#" id="busca" class="btn btn-primary" data-ng-click="cogerDatos()">Busca</a>
+							</div>
+						</form>
+					</div>
+					<div ng-include="'plantillas/spinner.html'" data-ng-show="preload"></div>
+					<div id="results" data-ng-show="loaded">
+						<p class="text-center">Resultados obtenidos de la BBDD de Github al buscar "{{ repositories }}": {{ total }}</p>
+						<p class="text-center">Solo mostramos los 100 primeros</p>
+						<table class="table table-striped table-hover table-responsive">
+							<thead>
+								<tr>
+									<th>Usuario</th>
+									<th>repositorio</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10">
+									<td><a href="{{ repo.owner.html_url}}" target="_blank">{{ repo.owner.login }}</a></td>
+									<td><a href="{{ repo.html_url}}" target="_blank">{{repo.name}}</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="paginador" class="text-center">
+							<dir-pagination-controls max-size="9" direction-links="true" boundary-links="true"></dir-pagination-controls>
 						</div>
-					</form>
-				</div>
-				<div ng-include="'plantillas/spinner.html'" data-ng-show="preload"></div>
-				<div id="results" data-ng-show="loaded">
-					<p>Resultados obtenidos de la BBDD de Github al buscar "{{ repositories }}": {{ total }}</p>
-					<p>Lista resultados (solo mostramos los 100 primeros):</p>
-					<!-- <ul>
-						<li data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10"><a href="{{ repo.html_url}}" target="_blank">{{ repo.owner.login }}/ {{repo.name}}</a></li>
-					</ul> -->
-					<table class="table">
-						<tr>
-							<td>Usuario</td>
-							<td>repositorio</td>
-						</tr>
-						<tr data-dir-paginate="repo in repositorio | orderBy:'owner.login' | itemsPerPage:10">
-							<td><a href="{{ repo.owner.html_url}}" target="_blank">{{ repo.owner.login }}</a></td>
-							<td><a href="{{ repo.html_url}}" target="_blank">{{repo.name}}</a></td>
-						</tr>
-					</table>
-					<div id="paginador">
-						<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
 					</div>
 				</div>
 			</div>
