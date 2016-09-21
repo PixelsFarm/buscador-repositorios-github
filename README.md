@@ -1,6 +1,5 @@
 # Buscador repositorios de Github.
 Mostramos una lista: usuario + repositorio
-###Utilizado:
-- Plantillas
-- Paginador
+### Utilizado:
+- Angular: plantillas, paginador.
 - Bootstrap
