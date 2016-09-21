@@ -1,6 +1,6 @@
-## Buscador repositorios de Github.
+# Buscador repositorios de Github.
 Mostramos una lista: usuario + repositorio
-Utilizado:
+###Utilizado:
 - Plantillas
 - Paginador
 - Bootstrap
