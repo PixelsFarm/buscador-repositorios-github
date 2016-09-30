@@ -6,7 +6,7 @@
 var miApp = angular.module('searchApp', ['angularUtils.directives.dirPagination']);
 
 //mainCtrl
-miApp.controller('mainCtrl', function($scope, $http) {
+miApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
 	//vars
 	$scope.preload = false;
 
@@ -31,7 +31,7 @@ miApp.controller('mainCtrl', function($scope, $http) {
 				console.log('error de conexion');
 			});
 	}
-});
+}]);
 
 
 
